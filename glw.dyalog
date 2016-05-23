@@ -10,7 +10,7 @@
 
  ⍝ CD here
      updates←⍺ kcontdiv input
-     ⍺≤numlayers:⍺ ∇ updates
+     ⍺≤numlayers:(⍺+1) ∇ updates
      ⍝ update structure : (w)(bi)(bi-1)
      updates
  }
