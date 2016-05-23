@@ -1,4 +1,4 @@
- z←gencreateinput -- utility function for creating input to the DBN - gen stands for generative
+ z←gencreateinput
  nin←3 ⍝ for now
  nout←3 ⍝ for now
 
