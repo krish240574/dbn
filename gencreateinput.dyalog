@@ -1,5 +1,4 @@
-nput
-z←gencreateinput
+ z←gencreateinput sample
  layernum←1 ⍝ for now
  nin←(-1)↑(⍴sample)
  nout←nin
@@ -11,9 +10,8 @@ z←gencreateinput
  tmp←DealWithCsv'c:\users\lenovo1\tmp.txt' ⍝ 28X28 randoom numbers, uniformly distributed b/w
  ⍝ (-a/4) and (a/4)
  w←⊃,/(((nin),(nin))⍴(tmp)) ⍝ ⊃ and ,/ for removing the nesting on each item -- aargh
- numlayers←2 ⍝ for now
  b←(numlayers,nin)⍴0 ⍝ biases
-
+ ⎕←numlayers
 
  ⍝ create the input nested array here
  ⎕←'Input is as follows :'
@@ -21,6 +19,8 @@ z←gencreateinput
  ⎕←'2. Weights between v and h - 28X29'
  ⎕←'3. Biases for each layer'
  ⎕←'4. Learning rate'
+ ⎕←'5. Number of input neurons'
+ ⎕←'6. Number of layers'
 
- input←(sample)(w)((numlayers,nin)⍴b)(lr)
+ input←(sample)(w)((numlayers,nin)⍴b)(lr)(nin)(numlayers)
  z←input
