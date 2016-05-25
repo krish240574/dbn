@@ -1,6 +1,6 @@
  glw←{
  ⍝ ⍺ - layernum
- ⍝ ⍵ - (w)(b)(b-1)
+ ⍝ ⍵ - (w)(b)(v1)
      hhat0←(1,nin)⍴x[⍺;] ⍝ use row of input as posterior
  ⍝ calculate hidden layer posterior
      ⍺>1:axt←((1,nin)⍴b[⍺;])+(hhat0+.×⍵[1]) ⋄ hhat←(1÷(1+*-1*axt)) ⋄ hhatinput←hhat
@@ -10,7 +10,7 @@
 
  ⍝ CD here
      updates←⍺ kcontdiv input
-     ⍺≤numlayers:(⍺+1) ∇ updates
+     ⍺≤numlayers:(⍺+1)∇ updates
      ⍝ update structure : (w)(bi)(bi-1)
      updates
  }
