@@ -1,4 +1,4 @@
- z←greedy;layernum;nin;nout;a
+ z←greedy;count;layernum;nin;nout;a;nr;nc;isz;mnist;numlayers;mnistmat;firstimg;input
  ⍝ greedy layer-wise pre-training for a DBN
  ⍝ Training set D = {Xt}(t=1..T)
  ⍝ pre-training learning rate epsilonp
@@ -12,13 +12,23 @@
  ⍝ b = bias for each layer
  ⍝ sigm = sigmoid activation function
  ⍝ Bengio(2012) - http://arxiv.org/pdf/1206.5533v2.pdf
- nin←3
- nout←3
- layernum←1
- lr←0.00001 ⍝ for now
- x←(nin,nin)⍴1 ⍝ for now
- w←3 3⍴-2.80804935,-0.98573124,-1.84607092,-0.19229113,1.88018512,-2.17080185,-0.63218141,2.82216473,1.06585069
- numlayers←2
- b←(numlayers,nin)⍴0 ⍝ biases
- ⍝ call the glw(greedy layer-wise training) function here
- o←layernum glw 0 ⍝ return updates from glw
+ ⍝ for MNist data
+ ⎕←'Reading CSV file, few seconds...'
+ mnist←DealWithCsv'd:\datasets\mnist\mnist_train_small.csv'
+ nr←(1↑⍴mnist)
+ nc←((-1)↑⍴mnist)
+ nin←nr
+ nout←nin
+ isz←28
+
+ numlayers←5 ⍝
+ mnistmat←(nr,isz,isz)⍴mnist[(⍳nr);1+⍳((-1)+nc)]
+
+ ⍝ sending one row now, can send whole 28X28 as a minibatch
+ firstimg←mnistmat[1;1;]
+ input←gencreateinput firstimg
+
+ ⍝ input←(xt or batch)(w)((numlayers,nin)⍴b)(lr)(nin)
+
+ count←1 ⍝ layer number
+ updates←count glw input  ⍝ this will glw the DBN
