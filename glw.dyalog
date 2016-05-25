@@ -11,6 +11,6 @@
  ⍝ CD here
      updates←⍺ kcontdiv input
      ⍺≤numlayers:(⍺+1)∇ updates
-     ⍝ update structure : (w)(bi)(bi-1)
+     ⍝ update structure : (w)(b)(v1) - v1 is the visible layer output from CD
      updates
  }
