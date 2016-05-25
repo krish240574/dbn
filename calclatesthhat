@@ -1,13 +1,13 @@
  z←j calclatesthhat input
  ⍝ j=1⋄while j<=layernum-1
- layernum←input[1]
- b←input[2]
- hhat0←input[3]
- w←input[4]
+ layernum←⊃input[1]
+ b←⊃input[2]
+ hhat0←⊃input[3]
+ w←⊃input[4]
 
- axt←((1,nin)⍴b[j;])+(hhat0+.×w)
- hhat←(1÷(1+*-1*axt))
  :If j≤layernum-1
+     axt←((1,nin)⍴b[j;])+(hhat0+.×w)
+     hhat←(1÷(1+*-1*axt))
      inp←(layernum)(b)(hhat)(w)
      z←(j+1)calclatesthhat inp
  :Else
